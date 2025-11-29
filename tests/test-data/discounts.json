@@ -1,0 +1,52 @@
+{
+  "D10": {
+    "code": "DISCOUNT10",
+    "value": "0.10",
+    "percent": "10%"
+  },
+  "S15": {
+    "code": "SAVE15",
+    "value": "0.15",
+    "percent": "15%"
+  },
+  "P20": {
+    "code": "PROMO20",
+    "value": "0.20",
+    "percent": "20%"
+  },
+  "H25": {
+    "code": "HOLIDAY25",
+    "value": "0.25",
+    "percent": "25%"
+  },
+  "NU30": {
+    "code": "NEWUSER30",
+    "value": "0.30",
+    "percent": "30%"
+  },
+  "F50": {
+    "code": "FLASH50",
+    "value": "0.50",
+    "percent": "50%"
+  },
+  "BS35": {
+    "code": "BIGSALE60",
+    "value": "0.35",
+    "percent": "35%"
+  },
+  "C40": {
+    "code": "CLEARANCE70",
+    "value": "0.40",
+    "percent": "40%"
+  },
+  "F45": {
+    "code": "FINAL80",
+    "value": "0.45",
+    "percent": "45%"
+  },
+  "LC50": {
+    "code": "LASTCHANCE90",
+    "value": "0.50",
+    "percent": "50%"
+  }
+}

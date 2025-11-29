@@ -24,7 +24,7 @@ export class orderConfirmPage{
 
     async getAllItems(){
         const allItems =await this.page.locator('.list-disc.pl-6 li').allInnerTexts();
-        console.log(allItems);
+        // console.log(allItems);
         
     }
 
