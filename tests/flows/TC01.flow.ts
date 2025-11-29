@@ -77,6 +77,7 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
             address.address1.country
         );
         await checkout.addCouponCode("DISCOUNT10");
+        expect(page.locator('[data-test-id="review-discount"]')).toContainText("10%");
         await checkout.paymentDetails(
             payment["American Express"].cardNumber,
             payment["American Express"].expiry,
