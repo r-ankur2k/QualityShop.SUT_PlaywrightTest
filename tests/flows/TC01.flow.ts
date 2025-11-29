@@ -6,6 +6,8 @@ import { checkoutPage } from "../pages/checkout.page";
 import payment from "../test-data/payments.json";
 import address from "../test-data/address.json";
 import { orderConfirmPage } from "../pages/confirmation.page";
+import discount from "../test-data/discounts.json";
+
 
 test.describe.serial("TC01 - Simple Flow" , ()=>{
     let page : Page;
@@ -22,15 +24,15 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
         const addProductToCart = new ProductsPage(page);
         const itemsCount = page.locator('[data-test-id="cart-count"]');
         await addProductToCart.cartButton(3);
-        expect(itemsCount).toHaveText("1");
+        await expect(itemsCount).toHaveText("1");
         await addProductToCart.cartButton(5);
-        expect(itemsCount).toHaveText("2");
+        await expect(itemsCount).toHaveText("2");
         await addProductToCart.cartButton(7);
-        expect(itemsCount).toHaveText("3");
+        await expect(itemsCount).toHaveText("3");
         await addProductToCart.cartButton(9);
-        expect(itemsCount).toHaveText("4");
+        await expect(itemsCount).toHaveText("4");
         await addProductToCart.cartButton(1);
-        expect(itemsCount).toHaveText("5");
+        await expect(itemsCount).toHaveText("5");
         console.log("Total Items : " + await itemsCount.innerText());
         await addProductToCart.checkoutCartButton();
     })
@@ -69,6 +71,12 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
     test("Checkout" , async()=>{
         const checkout = new checkoutPage(page);
         await checkout.chekckoutButton();
+
+        await checkout.addCouponCode(discount.S15.code);
+        const disElem = page.locator('[data-test-id="review-discount"]');
+        const discountAdded = await page.locator('[data-test-id="review-discount"]').textContent();
+        await expect(disElem).toContainText(discount.S15.percent);
+        console.log("Discount Added - "+ discountAdded);
         await checkout.addShipDetails(
             address.address1.name,
             address.address1.address,
@@ -76,15 +84,13 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
             address.address1.city,
             address.address1.country
         );
-        await checkout.addCouponCode("DISCOUNT10");
-        expect(page.locator('[data-test-id="review-discount"]')).toContainText("10%");
+        await page.waitForLoadState('load');
         await checkout.paymentDetails(
             payment["American Express"].cardNumber,
             payment["American Express"].expiry,
             payment["American Express"].cvv
         );
         await checkout.placeOrder()
-        await page.waitForTimeout(5000);
     });
 
     test("Confirmation" , async ()=>{
