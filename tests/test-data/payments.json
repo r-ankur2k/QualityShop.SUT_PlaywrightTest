@@ -1,0 +1,37 @@
+{
+  "Visa": {
+    "label": "Visa Credit Card",
+    "cardNumber": "4111 1111 1111 1111",
+    "expiry": "12/28",
+    "cvv": "123",
+    "holderName": "John Doe"
+  },
+  "MasterCard": {
+    "label": "MasterCard Credit Card",
+    "cardNumber": "5555 5555 5555 4444",
+    "expiry": "11/27",
+    "cvv": "456",
+    "holderName": "John Doe"
+  },
+  "American Express": {
+    "label": "American Express Card",
+    "cardNumber": "3782 822463 10005",
+    "expiry": "09/29",
+    "cvv": "7890",
+    "holderName": "John Doe"
+  },
+  "Discover": {
+    "label": "Discover Credit Card",
+    "cardNumber": "6011 0009 9013 9424",
+    "expiry": "03/26",
+    "cvv": "321",
+    "holderName": "John Doe"
+  },
+  "RuPay": {
+    "label": "RuPay Credit Card",
+    "cardNumber": "6521 1234 5678 9123",
+    "expiry": "07/27",
+    "cvv": "654",
+    "holderName": "John Doe"
+  }
+}

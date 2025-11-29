@@ -1,0 +1,37 @@
+{
+  "address1": {
+    "name" : "MS Dhoni",
+    "address": "H.No 14, Sector 22",
+    "city": "Noida",
+    "postalCode": "201301",
+    "country": "India"
+  },
+  "address2": {
+    "name" : "Sachin Tendulkar",
+    "address": "Flat 502, Palm Residency",
+    "city": "Mumbai",
+    "postalCode": "400076",
+    "country": "India"
+  },
+  "address3": {
+    "name" : "Virat Kohli",
+    "address": "12 MG Road, Near Brigade Towers",
+    "city": "Bengaluru",
+    "postalCode": "560001",
+    "country": "India"
+  },
+  "address4": {
+    "name" : "Abhishek Sharma",
+    "address": "Plot 88, Jubilee Hills",
+    "city": "Hyderabad",
+    "postalCode": "500033",
+    "country": "India"
+  },
+  "address5": {
+    "name" : "Sourva Ganguly",
+    "address": "House 44, Salt Lake Sector 1",
+    "city": "Kolkata",
+    "postalCode": "700064",
+    "country": "India"
+  }
+}
