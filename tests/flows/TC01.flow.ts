@@ -7,7 +7,7 @@ import payment from "../test-data/payments.json";
 import address from "../test-data/address.json";
 import { orderConfirmPage } from "../pages/confirmation.page";
 import discount from "../test-data/discounts.json";
-
+import fs from "fs";
 
 test.describe.serial("TC01 - Simple Flow" , ()=>{
     let page : Page;

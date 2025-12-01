@@ -2,7 +2,8 @@
 # Playwright
 node_modules/
 /test-results/
-reports/
+reports/playwright-report
+reports/traces
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
