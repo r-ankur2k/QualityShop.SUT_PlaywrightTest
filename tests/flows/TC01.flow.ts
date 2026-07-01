@@ -1,4 +1,4 @@
-import {test , expect, Page } from "@playwright/test"
+import { test, expect, Page } from "@playwright/test"
 import { LoginPage } from "../pages/Login.page";
 import { ProductsPage } from "../pages/Products.page";
 import { products } from "../test-data/products";
@@ -9,18 +9,18 @@ import { orderConfirmPage } from "../pages/confirmation.page";
 import discount from "../test-data/discounts.json";
 import fs from "fs";
 
-test.describe.serial("TC01 - Simple Flow" , ()=>{
-    let page : Page;
-    test.beforeAll(async ({browser})=>{
+test.describe.serial("TC01 - Simple Flow", () => {
+    let page: Page;
+    test.beforeAll(async ({ browser }) => {
         page = await browser.newPage();
         const login = new LoginPage(page);
         await login.goto();
-        await login.logIn(process.env.USER_EMAIL! , process.env.USER_PASSWORD!);
+        await login.logIn(process.env.USER_EMAIL!, process.env.USER_PASSWORD!);
         await page.waitForLoadState('load');
         expect(page.locator('[data-test-id="user-greeting"]')).toContainText("Hi, user");
 
     })
-    test("Add Products" , async ()=>{
+    test("Add Products", async () => {
         const addProductToCart = new ProductsPage(page);
         const itemsCount = page.locator('[data-test-id="cart-count"]');
         await addProductToCart.cartButton(3);
@@ -56,19 +56,19 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
 
         // 2. Use only titles present both in UI and JSON
         const totalJSON = uiTitles
-        .map(t => products[t])                           // get price string "$199.99"
-        .filter(Boolean)                                 // remove undefined if any mismatch
-        .map(p => Number(p.replace(/[^0-9.]/g, "")))     // convert to number
-        .reduce((sum, val) => sum + val, 0);
+            .map(t => products[t])                           // get price string "$199.99"
+            .filter(Boolean)                                 // remove undefined if any mismatch
+            .map(p => Number(p.replace(/[^0-9.]/g, "")))     // convert to number
+            .reduce((sum, val) => sum + val, 0);
 
         // 3. Keep dollar sign
         const finalPrice = `$${totalJSON.toFixed(2)}`;
         expect(finalPrice).toBe("$" + totalJSON)
         console.log("Total Based on Visible Items:", finalPrice);
-        
+
     });
 
-    test("Checkout" , async()=>{
+    test("Checkout", async () => {
         const checkout = new checkoutPage(page);
         await checkout.chekckoutButton();
 
@@ -76,7 +76,7 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
         const disElem = page.locator('[data-test-id="review-discount"]');
         const discountAdded = await page.locator('[data-test-id="review-discount"]').textContent();
         await expect(disElem).toContainText(discount.S15.percent);
-        console.log("Discount Added - "+ discountAdded);
+        console.log("Discount Added - " + discountAdded);
         await checkout.addShipDetails(
             address.address1.name,
             address.address1.address,
@@ -93,7 +93,7 @@ test.describe.serial("TC01 - Simple Flow" , ()=>{
         await checkout.placeOrder()
     });
 
-    test("Confirmation" , async ()=>{
+    test("Confirmation", async () => {
         const confirm = new orderConfirmPage(page);
         await confirm.confirmMsg();
         await confirm.getAllItems();
